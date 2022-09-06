@@ -7,8 +7,12 @@
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "cpns/*": [
+        "src/components/*"
       ]
     },
+    "jsx":"preserve",
     "lib": [
       "esnext",
       "dom",
