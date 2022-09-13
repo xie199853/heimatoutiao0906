@@ -21,7 +21,7 @@ const routes = [
       },
       {
         path: '/video',
-        component: () => import(/* wbpackChunkName:"base" */ '@/views/Home')
+        component: () => import(/* wbpackChunkName:"base" */ '@/views/Video')
       },
       {
         path: '/qa',

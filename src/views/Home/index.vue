@@ -13,8 +13,12 @@
         <!-- 文章详情 -->
          <article-list :id="item.id"></article-list>
         </van-tab>
-      <span class="toutiao toutiao-gengduo"></span>
+      <span class="toutiao toutiao-gengduo" @click="isShow=true"></span>
     </van-tabs>
+    <!-- 弹出层 -->
+    <van-popup closeable close-icon-position="top-left" v-model="isShow" position="bottom" :style="{ height: '100%' }" >
+    <channel-edit :my-channels="channerls" @change-active=";[(isShow=false),(active=$event)]"></channel-edit>
+    </van-popup>
   </div>
 </template>
 
@@ -23,14 +27,17 @@
 // 2. ？. ===> 可选链操作符，？前面是undifined,那么不会往后取值
 import { getChannelAPI } from '@/Api'
 import ArticleList from './components/ArtcleList.vue'
+import ChannelEdit from './components/ChannelEdit.vue'
 export default {
   components: {
-    ArticleList
+    ArticleList,
+    ChannelEdit
   },
   data() {
     return {
       active: 0,
-      channerls: []
+      channerls: [],
+      isShow: false
     }
   },
   created() {
