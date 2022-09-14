@@ -20,18 +20,19 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   plugins: [
     createPersistedState({
-      key: 'SET_TOKEN',
+      key: 'HEIMA_TOUTIAO',
       // 本地存储 不写默认就是
       // storage: window.localStorage
       // 会话存储
       // storage: window.sessionStorage
-      reducer({ tokenObj }) {
-        return { tokenObj }
+      reducer({ tokenObj, myChannels }) {
+        return { tokenObj, myChannels }
       }
     })
   ],
   state: {
-    tokenObj: {}
+    tokenObj: {},
+    myChannels: []
   },
   getters: {
     isLogin(state) {
@@ -42,6 +43,13 @@ export default new Vuex.Store({
     SET_TOKEN(state, token) {
       // 将tokon存在vuex
       state.tokenObj = token
+    },
+    /**
+     *
+     * @param {Array} channels 删除或添加后的最新的channels
+     */
+    SET_MY_CHANNELS(state, channels) {
+      state.myChannels = channels
     }
   },
   actions: {},
